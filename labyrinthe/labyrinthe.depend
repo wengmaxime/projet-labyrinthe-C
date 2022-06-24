@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1650637205 source:c:\users\weng\documents\esgi\labyrinthe\map settings.c
+
+1650635318 source:c:\users\weng\documents\esgi\labyrinthe\move.c
+
+1650646915 source:c:\users\weng\documents\esgi\labyrinthe\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
