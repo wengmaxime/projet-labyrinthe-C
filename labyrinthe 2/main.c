@@ -93,93 +93,100 @@ void laby_generator(int verti,int horizon,int a,int b,char zone[verti][horizon])
             zone[a][b]='#';
         }
     }
-    int cord_gene_verti = rand() % verti;
-    int cord_gene_horizon = rand() % horizon;
+    int cord_gene_verti = verti/2;
+    int cord_gene_horizon = horizon/2;
     zone[cord_gene_verti][cord_gene_horizon]=' ';
+    printf("%d %d\n",cord_gene_verti,cord_gene_horizon);
     //int wall=0;
     char zone_B[verti][horizon];
-    for (int i=0;i<5000;i++){
-        //int road = 0;
+    for (int i=0;i<300000;i++){
+        //int road = 2;
         int road = rand() % 4;
+        //road = 3;
+        //printf("%d",road);
         //if (cord_gene_verti!=0&&cord_gene_horizon!=0&&cord_gene_verti!=verti&&cord_gene_horizon!=horizon){
             if (road==0){
                 if (zone[cord_gene_verti+1][cord_gene_horizon]=='#'&&zone[cord_gene_verti+1][cord_gene_horizon+1]=='#'&&zone[cord_gene_verti+1][cord_gene_horizon-1]=='#'&&zone[cord_gene_verti+2][cord_gene_horizon]=='#'){
                     zone[cord_gene_verti+1][cord_gene_horizon]=' ';
-
-                    for (a=0;a<verti;a++){
+                    for (a=0;a<verti-1;a++){
                         for (b=0;b<horizon;b++){
-                            if (a!=verti){
+                            //if (a!=verti){
                                 zone_B[a][b]=zone[a+1][b];
-                            } else {
-                                zone_B[verti][b]=zone[0][b];
-                            }
+                            //} else {
+                                zone_B[verti-1][b]=zone[0][b];
+                            //}
                         }
                     }
                 }
                 if (zone[cord_gene_verti+1][cord_gene_horizon]==' '){
-                    cord_gene_verti=cord_gene_verti+1;
+                    //cord_gene_verti=cord_gene_verti+1;
                 }
             }
+
+            //}
             if (road==1){
                 if (zone[cord_gene_verti-1][cord_gene_horizon]=='#'&&zone[cord_gene_verti-1][cord_gene_horizon+1]=='#'&&zone[cord_gene_verti-1][cord_gene_horizon-1]=='#'&&zone[cord_gene_verti-2][cord_gene_horizon]=='#'){
                     zone[cord_gene_verti-1][cord_gene_horizon]=' ';
-
-                    /*for (a=0;a<verti;a++){
+                    for (a=1;a<verti;a++){
                         for (b=0;b<horizon;b++){
-                            if (a!=0){
+                            //if (a!=0){
                                 zone_B[a][b]=zone[a-1][b];
-                            } else {
-                                zone_B[0][b]=zone[verti][b];
-                            }
+                            //} else {
+                                zone_B[0][b]=zone[verti-1][b];
+                            //}
                         }
-                    }*/
+                    }
                 }
                 if (zone[cord_gene_verti-1][cord_gene_horizon]==' '){
-                    cord_gene_verti=cord_gene_verti-1;
+                    //cord_gene_verti=cord_gene_verti-1;
                 }
             }
+
+            //}
             if (road==2){
                 if (zone[cord_gene_verti][cord_gene_horizon+1]=='#'&&zone[cord_gene_verti+1][cord_gene_horizon+1]=='#'&&zone[cord_gene_verti-1][cord_gene_horizon+1]=='#'&&zone[cord_gene_verti][cord_gene_horizon+2]=='#'){
                     zone[cord_gene_verti][cord_gene_horizon+1]=' ';
-
-                    /*for (a=0;a<verti;a++){
-                        for (b=0;b<horizon;b++){
-                            if (b!=horizon){
+                    for (a=0;a<verti;a++){
+                        for (b=0;b<horizon-1;b++){
+                            //if (b!=horizon){
                                 zone_B[a][b]=zone[a][b+1];
-                            } else {
-                                zone_B[a][horizon]=zone[a][0];
-                            }
+                            //} else {
+                                zone_B[a][horizon-1]=zone[a][0];
+                            //}
                         }
-                    }*/
+                    }
                 }
                 if (zone[cord_gene_verti][cord_gene_horizon+1]==' '){
-                    cord_gene_horizon=cord_gene_horizon+1;
+                    //cord_gene_horizon=cord_gene_horizon+1;
                 }
             }
+
+            //}
             if (road==3){
                 if (zone[cord_gene_verti][cord_gene_horizon-1]=='#'&&zone[cord_gene_verti+1][cord_gene_horizon-1]=='#'&&zone[cord_gene_verti-1][cord_gene_horizon-1]=='#'&&zone[cord_gene_verti][cord_gene_horizon-2]=='#'){
                     zone[cord_gene_verti][cord_gene_horizon-1]=' ';
-
-                    /*for (a=0;a<verti;a++){
-                        for (b=0;b<horizon;b++){
-                            if (b!=0){
+                    for (a=0;a<verti;a++){
+                        for (b=1;b<horizon;b++){
+                            //if (b!=0){
                                 zone_B[a][b]=zone[a][b-1];
-                            } else {
-                                zone_B[a][0]=zone[a][horizon];
-                            }
+                            //} else {
+                                zone_B[a][0]=zone[a][horizon-1];
+                            //}
                         }
-                    }*/
+                    }
                 }
                 if (zone[cord_gene_verti][cord_gene_horizon-1]==' '){
-                    cord_gene_horizon=cord_gene_horizon-1;
+                    //cord_gene_horizon=cord_gene_horizon-1;
                 }
             }
-            /*for (a=0;a<verti;a++){
+
+            //}
+
+            for (a=0;a<verti;a++){
                 for (b=0;b<horizon;b++){
                     zone[a][b]=zone_B[a][b];
                 }
             }
-            printf("\n");*/
 
         //}
     }
@@ -228,7 +235,7 @@ int main(){
     //choose labyrinthe size
 
     srand(time(NULL));
-    int a=0,b=0,verti=15,horizon=15;
+    int a=0,b=0,verti=10,horizon=10;
 
     char zone[verti][horizon];
     printf("choisissez la longueur horizontale du labyrinthe\n");
